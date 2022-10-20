@@ -37,4 +37,9 @@ public class LibraryController {
         dao.deleteBookById((library.getId()));
         return "{status:'success'}";
     }
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/searchlibrary",consumes = "application/json",produces = "application/json")
+    public List<LibraryModel> searchlibrary(@RequestBody LibraryModel library){
+        return (List<LibraryModel>) dao.searchlibrary(library.getBookname());
+    }
 }
